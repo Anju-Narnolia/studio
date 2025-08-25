@@ -7,7 +7,7 @@ export default function HeroSection() {
     <section className="relative h-screen min-h-[600px] md:h-[70vh] lg:h-screen w-full flex items-center">
       <div className="absolute inset-0 z-[-1]">
         <Image
-          src="https://images.unsplash.com/photo-1580584126903-c17d41830450"
+          src="https://images.unsplash.com/photo-1580584126903-c17d41830450?q=80&w=2070&auto=format&fit=crop"
           alt="Aurora’s award-winning engineering complex at twilight"
           layout="fill"
           objectFit="cover"
