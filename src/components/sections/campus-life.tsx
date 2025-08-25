@@ -9,21 +9,21 @@ const amenities = [
 
 const campusImages = [
   {
-    src: 'https://placehold.co/600x400.png',
-    alt: 'Students collaborating in an augmented reality lab',
-    aiHint: 'students lab',
+    src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1350&q=80',
+    alt: 'Students collaborating in a modern workshop',
+    aiHint: 'students workshop',
     className: 'row-span-2 col-span-2'
   },
   {
-    src: 'https://placehold.co/600x400.png',
-    alt: 'Student-built electric go-kart during a race',
-    aiHint: 'go-kart race',
+    src: 'https://images.unsplash.com/photo-1541873676-a18131494184?auto=format&fit=crop&w=1350&q=80',
+    alt: 'Student presenting a project in a classroom',
+    aiHint: 'student presentation',
     className: 'col-span-1'
   },
   {
-    src: 'https://placehold.co/600x400.png',
-    alt: 'Students installing solar panels on a rooftop',
-    aiHint: 'solar panel',
+    src: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1350&q=80',
+    alt: 'Students in graduation gowns celebrating',
+    aiHint: 'student graduation',
     className: 'col-span-1'
   }
 ];
