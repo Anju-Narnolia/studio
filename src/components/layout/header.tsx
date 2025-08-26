@@ -34,14 +34,14 @@ export default function Header() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out text-white',
           scrolled ? 'h-[64px] bg-background/80 shadow-md backdrop-blur-sm' : 'h-[72px]',
           isMenuOpen ? 'bg-background' : ''
         )}
       >
         <div className="container mx-auto flex h-full items-center justify-between px-6">
           <Link href="/" className="flex items-center">
-            <span className="font-headline text-2xl font-bold text-primary">
+            <span className={`font-headline text-2xl font-bold ${scrolled? "text-primary":"text-background"}`}>
               Aurora Institute of Engineering
             </span>
           </Link>
@@ -50,7 +50,7 @@ export default function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="font-body text-sm font-medium text-foreground hover:text-accent transition-colors"
+                className={`font-body text-sm font-medium text-foreground ${scrolled? "text-primary":"text-white"} hover:text-accent transition-colors`}
               >
                 {link.name}
               </Link>

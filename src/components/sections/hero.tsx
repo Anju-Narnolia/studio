@@ -21,22 +21,22 @@ const slides = [
     aiHint: 'scientists laboratory',
   },
   {
-    url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1950&q=80',
+    url: 'https://images.unsplash.com/photo-1719408937898-e15b8638e1d8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c3R1ZGVudCUyMGdyYWR1YXRpb258ZW58MHx8MHx8fDA%3D',
     alt: 'Graduation ceremony with students throwing caps in the air',
     aiHint: 'student graduation',
   },
   {
-    url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1950&q=80',
+    url: 'https://images.unsplash.com/photo-1596496356933-9b6e0b186b88?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3R1ZGVudHMlMjB3b3Jrc2hvcHxlbnwwfHwwfHx8MA%3D%3D',
     alt: 'Students collaborating on a project in a workshop',
     aiHint: 'students workshop',
   },
   {
-    url: 'https://images.unsplash.com/photo-1616587896649-7ca25a7c3a7c?auto=format&fit=crop&w=1950&q=80',
+    url: 'https://images.unsplash.com/photo-1603732551681-2e91159b9dc2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2lyY3VpdCUyMGJvYXJkfGVufDB8fDB8fHww',
     alt: 'Close-up of a high-tech circuit board',
     aiHint: 'circuit board',
   },
   {
-    url: 'https://images.unsplash.com/photo-1580584126903-c17d41830450?auto=format&fit=crop&w=1950&q=80',
+    url: 'https://images.unsplash.com/flagged/photo-1554473675-d0904f3cbf38?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dW5pdmVyc2l0eSUyMGNhbXB1c3xlbnwwfHwwfHx8MA%3D%3D',
     alt: 'Modern university campus building at dusk',
     aiHint: 'university campus',
   },
