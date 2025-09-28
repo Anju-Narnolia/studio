@@ -52,6 +52,51 @@ export default function FormEditor() {
     setFields(fields.map(f => (f.id === id ? { ...f, [key]: value } : f)));
   };
 
+  // Function to duplicate a field
+  const duplicateField = (id: string) => {
+    const fieldToDuplicate = fields.find(f => f.id === id);
+    if (fieldToDuplicate) {
+      const newField = {
+        ...fieldToDuplicate,
+        id: uuid(),
+        label: `${fieldToDuplicate.label} (Copy)`,
+        fields: fieldToDuplicate.fields?.map(subField => ({
+          ...subField,
+          id: uuid()
+        }))
+      };
+      const fieldIndex = fields.findIndex(f => f.id === id);
+      const newFields = [...fields];
+      newFields.splice(fieldIndex + 1, 0, newField);
+      setFields(newFields);
+    }
+  };
+
+  // Function to delete a field
+  const deleteField = (id: string) => {
+    setFields(fields.filter(f => f.id !== id));
+  };
+
+  // Function to move field up
+  const moveFieldUp = (id: string) => {
+    const fieldIndex = fields.findIndex(f => f.id === id);
+    if (fieldIndex > 0) {
+      const newFields = [...fields];
+      [newFields[fieldIndex - 1], newFields[fieldIndex]] = [newFields[fieldIndex], newFields[fieldIndex - 1]];
+      setFields(newFields);
+    }
+  };
+
+  // Function to move field down
+  const moveFieldDown = (id: string) => {
+    const fieldIndex = fields.findIndex(f => f.id === id);
+    if (fieldIndex < fields.length - 1) {
+      const newFields = [...fields];
+      [newFields[fieldIndex], newFields[fieldIndex + 1]] = [newFields[fieldIndex + 1], newFields[fieldIndex]];
+      setFields(newFields);
+    }
+  };
+
   return (
     <>
       <div className="flex min-h-screen gap-4">
@@ -93,9 +138,51 @@ export default function FormEditor() {
 
       {/* Form Canvas */}
       <div className="flex-1 p-4 space-y-4 ">
-        {fields.map((field) => (
-          <div key={field.id} className="border p-4 rounded bg-gray-100 w-[700]">
-              {/* <label className="block font-semibold mb-2">{field.label}</label> */}
+        {fields.map((field, index) => (
+          <div key={field.id} className="border p-4 rounded bg-gray-100 w-[700] relative group">
+            {/* Field Controls */}
+            <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+              <button
+                onClick={() => moveFieldUp(field.id)}
+                disabled={index === 0}
+                className="p-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed"
+                title="Move Up"
+              >
+                ↑
+              </button>
+              <button
+                onClick={() => moveFieldDown(field.id)}
+                disabled={index === fields.length - 1}
+                className="p-1 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed"
+                title="Move Down"
+              >
+                ↓
+              </button>
+              <button
+                onClick={() => duplicateField(field.id)}
+                className="p-1 bg-green-500 text-white rounded hover:bg-green-600"
+                title="Duplicate"
+              >
+                ⧉
+              </button>
+              <button
+                onClick={() => deleteField(field.id)}
+                className="p-1 bg-red-500 text-white rounded hover:bg-red-600"
+                title="Delete"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Field Type Badge */}
+            <div className="absolute top-2 left-2">
+              <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">
+                {field.type}
+              </span>
+            </div>
+
+            {/* Field Content */}
+            <div className="mt-6">
               {field.type === "FullName" && (
                 <div className="flex gap-3">
                   <div className="flex-1 flex flex-col">
@@ -131,14 +218,23 @@ export default function FormEditor() {
               {field.type === "Date" && (
                 <input type="date" className="border p-2 w-full rounded" />
               )}
-              {field.type !== "FullName" && (
-                <input
-                  value={field.label}
-                  onChange={(e) => updateField(field.id, "label", e.target.value)}
-                  placeholder="Edit label"
-                  className="border p-1 w-full mt-3 rounded"
-                />
-              )}
+              {/* Field Properties Editor */}
+              <div className="mt-4 space-y-2">
+            
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id={`required-${field.id}`}
+                    checked={field.required || false}
+                    onChange={(e) => updateField(field.id, "required", e.target.checked)}
+                    className="rounded"
+                  />
+                  <label htmlFor={`required-${field.id}`} className="text-sm font-medium">
+                    Required field
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded"> Submit</button>

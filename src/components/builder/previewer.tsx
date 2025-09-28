@@ -35,7 +35,10 @@ export default function FormPreview() {
         <div key={f.id} className="mb-4">
           {f.type === "FullName" ? (
             <div className="space-y-2">
-              <label className="block text-md  font-bold">{f.label}</label>
+              <label className="block text-md font-bold">
+                {f.label}
+                {f.required && <span className="text-red-500 ml-1">*</span>}
+              </label>
               <div className="flex gap-3">
                 <div className="flex-1">
                   <label className="block text-md  mb-1">First Name</label>
@@ -61,7 +64,10 @@ export default function FormPreview() {
             </div>
           ) : (
             <>
-              <label className="block text-md font-medium mb-1">{f.label}</label>
+              <label className="block text-md font-medium mb-1">
+                {f.label}
+                {f.required && <span className="text-red-500 ml-1">*</span>}
+              </label>
               {f.type === "Textarea" ? (
                 <textarea
                   id={f.id}
@@ -83,7 +89,7 @@ export default function FormPreview() {
           )}
         </div>
       ))}
-      <button type="submit" className={`${theme.buttonColor} ${theme.buttonHoverColor} text-white px-4 py-2 rounded transition-colors`}>
+      <button type="submit" className={`${theme.buttonColor} ${theme.buttonHoverColor} text-white px-4 py-2 rounded transition-colors bg-blue-500` }>
         Submit
       </button>
     </form>
